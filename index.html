@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/shop.css">
+    <title>Document</title>
+</head>
+<body ng-controller="ctrl">
+    <header class="header">
+        <span class="iconfont icon-zuojiantou"></span>
+        <span>订单支付</span>
+        <span class="iconfont icon-xiaoxi"></span>
+    </header>
+    <section class="section">
+        <nav class="nav">
+            <p>138****8888<span>路飞</span></p>
+            <div class="title">
+                <span class="iconfont icon-dizhi"></span>
+                <span>北京市海淀区知春路北京市海淀区知春路北京市海淀区 知春路</span>
+                <span class="iconfont icon-iconfontjiantouyou"></span>
+            </div>
+        </nav>
+        <div class="bg"></div>
+        <div class="content" ng-repeat="x in data">
+            <p class="p1"><i class="iconfont icon-dianpu"></i>恒之然旗舰店</p>
+            <dl >
+                <dt><img src="images/img_06.png" alt=""></dt>
+                <dd>
+                    <span>{{x.name}}</span>
+                    <!--<input type="checkbox" ng-model="x.checked">-->
+                    <div class="money">
+                        <span>￥{{x.price}}</span>
+                        <span style="text-decoration:line-through;color: #ccc">￥1000.00</span>
+                    </div>
+                    <div class="btn"><input type="button" value="-" class="del" ng-click="add($index,'-')"><input type="text" class="txt" ng-model="x.count"><input type="button" value="+" class="add" ng-click="add($index,'+')"></div>
+                </dd>
+            </dl>
+            <p class="p2" style="padding-top: 15px;">商品总金额:<span ng-blid="total(sum)"></span></p>
+            <p class="p2">运费:<span>¥10.00</span></p>
+            <p class="p2">总额(含运费):<span>￥{{(x.price*x.count).toFixed(2)}}</span></p>
+        </div>
+        <div class="pay" ng-repeat="x in data">
+            <p>余额支付
+                <span>{{x.prize}}</span>
+            </p>
+            <div class="div">
+            <p>
+                奖金支付 {{x.prize}}
+            </p>
+            <div class="container">
+                <input type="checkbox" id="radio" name="switch" ng-model="x.checked">
+                <label for="radio" class="radio">
+                    <span class="circle"></span>
+                    <span class="text on">ON</span>
+                    <span class="text off">OFF</span>
+                </label>
+            </div>
+            </div>
+            <p>其他支付方式</p>
+        </div>
+        <div class="mark">金额不足，请选择其他支付方式！</div>
+    </section>
+    <footer class="footer">
+        <div class="left">
+            <p>总计:￥<b style="color: #f71919" ng-bind="total('total')"></b></p>
+            <span>(含运费)</span>
+        </div>
+        <div class="right">提交订单</div>
+    </footer>
+    <script src="../angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.controller('ctrl',function($scope){
+            $scope.data=[
+                {"name":"维维嚼益嚼水果大豆棒橙味维维嚼","price":'988.00',"prize":'100',"count":1}
+            ];
+            $scope.total=0;
+            $scope.add=function(i,type){
+                console.log(i,type);
+                if(type=='-'){
+                    $scope.data[i].count--;
+                    if($scope.data[i].count<=1){
+                        $scope.data[i].count=1;
+                    }
+                }else{
+                    $scope.data[i].count++;
+                }
+            };
+
+            $scope.total=function(todo){
+                var number=0;
+                for(var i=0;i<$scope.data.length;i++){
+                    number+=$scope.data[i].price*$scope.data[i].count;
+                    if($scope.data[i].checked){
+                        if(todo=='total'){
+                            number=($scope.data[i].price*$scope.data[i].count)-$scope.data[i].prize;
+                        }
+                    }
+                }
+                return number;
+            }
+
+        })
+    </script>
+</body>
+</html>

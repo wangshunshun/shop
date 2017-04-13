@@ -1,0 +1,244 @@
+*{
+  margin:0;
+  padding: 0;
+}
+body{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  background: #eeeeee;
+}
+.header{
+  height:44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+}
+.section{
+  flex: 1;
+  overflow-y: scroll;
+  .nav{
+    height: 88px;
+    background: #fff;
+    p{
+      width: 80%;
+      line-height: 45px;
+      margin: 0 auto;
+      span{
+        float: left;
+        padding-right: 20px;
+      }
+    }
+    .title{
+      height: 43px;
+      display: flex;
+      justify-content: flex-start;
+      padding: 0 15px;
+      box-sizing: border-box;
+    }
+  }
+  .bg{
+    height: 20px;
+    background: url("../images/bg_02.png");
+  }
+  .content{
+    height: 242px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #fff;
+    .p1{
+      height: 45px;
+      line-height: 45px;
+      padding-left: 15px;
+      i{
+        color:#ff6d1f;
+        padding-right: 5px;
+      }
+    }
+    dl{
+      height: 102px;
+      display: flex;
+      dt img{
+        height: 102px;
+      }
+      dd{
+        padding-left: 9px;
+        position: relative;
+        .money{
+          width: 61px;
+          height: 27px;
+          position: absolute;
+          bottom: 10px;
+          span{
+            color: red;
+            font-weight: bold;
+          }
+        }
+        .btn{
+          position: absolute;
+          right: 0;
+          bottom: 5px;
+          .del,.add{
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            text-align: center;
+          }
+          .txt{
+            border: 1px solid #ccc;
+            width: 50px;
+            height: 28px;
+            text-align: center;
+          }
+        }
+      }
+    }
+    .p2{
+      line-height: 25px;
+      span{
+        float: right;
+      }
+    }
+  }
+  .pay{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+    padding-right: 10px;
+    .div{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    p{
+      height: 57px;
+      line-height: 57px;
+      padding-left: 15px;
+      &:nth-child(1){
+        border-bottom: 1px solid #e5e5e5;
+      }
+    }
+    .text {
+      display: none;
+    }
+    .on{
+      color:#333;
+    }
+    .off{
+      color:#eee;
+    }
+    .circle {
+      position: absolute;
+      display: inline-block;
+    }
+    #radio{
+      display: none;
+    }
+    #radio ~label {
+      background-color: grey;
+    }
+
+    #radio ~label .circle {
+      left: 0;
+      transition: all 0.3s;
+      --webkit-transition: all 0.3s;
+    }
+
+    #radio ~label .on {
+      display: none;
+    }
+
+    #radio ~ label .off {
+      display: inline-block;
+    }
+
+    #radio:checked ~ label {
+      background: lime;
+    }
+
+    #radio:checked ~label .circle {
+      left: 50px;
+    }
+    #radio:checked ~label .on {
+      display: inline-block;
+    }
+
+    #radio:checked ~ label .off {
+      display: none;
+    }
+    label {
+      display: inline-block;
+      position: relative;
+      height: 30px;
+      width: 80px;
+      border-top-left-radius: 15px 50%;
+      border-bottom-left-radius: 15px 50%;
+      border-top-right-radius: 15px 50%;
+      border-bottom-right-radius: 15px 50%;
+      box-shadow: 0 0 2px black;
+    }
+
+    label .circle {
+      display: inline-block;
+      height: 26px;
+      width: 26px;
+      border-radius: 50%;
+      border: 2px solid #333;
+      background-color: #eee;
+    }
+    label .text {
+      text-indent: 30px;
+      line-height: 28px;
+      font-size: 18px;
+      font-family: sans-serif;
+      text-shadow: 0 0 2px #ddd;
+    }
+  }
+  .mark{
+    width: 70%;
+    height: 37px;
+    background:rgba(0,0,0,0.7);
+    color: #fff;
+    border-top-left-radius: 15px 50%;
+    border-bottom-left-radius: 15px 50%;
+    border-top-right-radius: 15px 50%;
+    border-bottom-right-radius: 15px 50%;
+    text-align: center;
+    line-height:37px ;
+    left: 50%;
+    margin-left: -35%;
+    position: fixed;
+    bottom: 70px;
+    display: none;
+  }
+}
+.footer{
+  height: 60px;
+  display: flex;
+  background: #fff;
+  .left{
+    flex: 3;
+    text-align: right;
+    padding-right: 10px;
+    line-height: 24px;
+    p{
+      color: #f96161;
+    }
+  }
+  .right{
+    flex: 2;
+    background: #fc4141;
+    line-height: 60px;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+  }
+}
